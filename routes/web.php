@@ -25,6 +25,6 @@ Route::get('/category/{category:slug}', [FrontController::class, 'category'])->n
 
 Route::get('/brand/{brand:slug}/products', [FrontController::class, 'brand'])->name('front.brand');
 
-Route::get('/booking/check', [FrontController::class, 'my_booking'])->name('front.my_booking');
+// Route::get('/booking/check', [FrontController::class, 'my_booking'])->name('front.my_booking');
 
 
