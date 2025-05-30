@@ -14,7 +14,7 @@
 <body>
 	<main class="max-w-[640px] mx-auto min-h-screen flex flex-col relative has-[#Bottom-nav]:pb-[144px]">
 		<div id="Top-navbar" class="flex items-center justify-between px-5 pt-5 w-full">
-			<a href="{{ url()->previous() }}">
+			<a href="{{ route('front.category', ['category' => $category]) }}">
 				<div class="size-[44px] flex shrink-0">
 					<img src="{{asset('assets/images/icons/arrow-left.svg')}}" alt="icon" />
 				</div>
@@ -27,10 +27,10 @@
 		<section id="brand"
 			class="flex p-[24px_20px] outline outline-1 outline-[#EDEEF0] rounded-2xl overflow-hidden items-center justify-between mt-[30px] mx-5">
 			<div class="h-[30px] flex shrink-0">
-				<img src="{{asset('assets/images/logos/apple.svg')}}" alt="brand" class="size-full" />
+				<img src="{{ Storage::url($brand->logo) }}" alt="brand" class="size-full" />
 			</div>
 			<div class="flex flex-col items-end gap-[2x]">
-				<p class="font-semibold">Apple</p>
+				<p class="font-semibold">{{ $brand->name }}</p>
 				<p class="text-sm leading-[21px] text-[#6E6E70] text-nowrap">{{ $brand->products->count() }} Products</p>
 			</div>
 		</section>
@@ -40,7 +40,7 @@
                 @forelse ($products as $product)
                     
                     
-				<a href="details.html" class="card">
+				<a href="{{ route('front.details', $product->slug) }}" class="card">
 					<div class="flex items-center gap-3">
 						<div class="w-20 h-20 flex shrink-0 rounded-2xl overflow-hidden bg-[#F6F6F6] items-center">
 							<div class="w-full h-[50px] flex shrink-0 justify-center">

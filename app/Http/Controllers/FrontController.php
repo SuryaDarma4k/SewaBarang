@@ -23,12 +23,17 @@ class FrontController extends Controller
 
     public function brand(Brand $brand){
         $category_id = session()->get('category_id');
+        $category = Category::find($category_id);
 
         $products = Product::where('brand_id', $brand->id)
         ->where('category_id', $category_id)
         ->latest()
         ->get();
 
-        return view('front.gadgets', compact('brand', 'products'));
+        return view('front.gadgets', compact('brand', 'products', 'category'));
+    }
+
+    public function details(Product $product){
+        return view('front.details', compact('product'));
     }
 }
