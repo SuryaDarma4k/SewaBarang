@@ -18,7 +18,7 @@ class Transaction extends Model
         'duration',
         'ended_at',
         'is_paid',
-        'delivery_time',
+        'delivery_type',
         'total_amount',
         'product_id',
         'store_id',

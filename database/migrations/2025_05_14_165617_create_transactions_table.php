@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('duration');
             $table->date('ended_at');
             $table->boolean('is_paid');
-            $table->enum('delivery_time', ['pickup', 'home_delivery'])->default('pickup');
+            $table->enum('delivery_type', ['pickup', 'home_delivery'])->default('pickup');
             $table->unsignedBigInteger('total_amount');
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->foreignId('store_id')->constrained()->cascadeOnDelete();

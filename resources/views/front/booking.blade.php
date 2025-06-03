@@ -14,7 +14,7 @@
 <body>
 	<main class="max-w-[640px] mx-auto min-h-screen flex flex-col relative has-[#Bottom-nav]:pb-[144px]">
 		<div id="Top-navbar" class="flex items-center justify-between px-5 pt-5">
-			<a href="details.html">
+			<a href="{{ route('front.details', $product->slug) }}">
 				<div class="size-[44px] flex shrink-0">
 					<img src="{{ asset('assets/images/icons/arrow-left.svg')}}" alt="icon" />
 				</div>
@@ -66,8 +66,10 @@
 		<form method="POST" action="{{ route('front.booking_save', $product->slug) }}" class="flex flex-col gap-[30px] mt-[30px]">
 			@csrf
 			<input type="hidden" value="{{ $product->price }}" id="productPrice">
+			<input type="hidden" name="delivery_type" value="pickup" id="deliveryType">
 			<input type="hidden" name="duration" id="duration" value="1" class="absolute -z-10 opacity-0 w-1"
 						required />
+			<input type="hidden" name="store_id" id="storeId" value="" required/>
 			<div class="flex items-center justify-between px-5">
 				<label for="days" class="font-semibold">How many days?</label>
 				<div class="flex items-center gap-3 relative">

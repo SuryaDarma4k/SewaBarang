@@ -3,11 +3,15 @@ const minus = document.getElementById("Minus");
 const plus = document.getElementById("Plus");
 const count = document.getElementById("CountDays");
 const days = document.getElementById("Days");
-const duration = document.getElementById("duration");
-const totalPrice = document.getElementById("Total");
-const productPrice = document.getElementById("productPrice");
-const defaultPrice = productPrice.value;
 
+const duration = document.getElementById("duration");
+
+const totalPrice = document.getElementById("Total");
+
+const productPrice = document.getElementById("productPrice");
+
+const defaultPrice = productPrice.value;
+ 
 function updateTotalPrice() {
     let subTotal = days.value * defaultPrice;
     totalPrice.innerText = "Rp " + subTotal.toLocaleString('id-ID');
@@ -81,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleRequiredOptions() {
     const pickupRadio = document.getElementById('Pickup');
     const deliveryRadio = document.getElementById('Delivery');
+    const deliveryType = document.getElementById('deliveryType');
     const storeRadios = document.getElementsByName('store');
     const addressTextarea = document.getElementsByName('address')[0];
 
@@ -90,11 +95,15 @@ function toggleRequiredOptions() {
         });
         // addressTextarea.required = false;
         addressTextarea.value = 'Diambil di Toko Saja';
+        deliveryType.value='pickup';
     } else if (deliveryRadio.checked) {
         storeRadios.forEach(radio => {
             radio.required = false;
         });
         // addressTextarea.required = true;
         addressTextarea.value = '';
+        deliveryType.value='home_delivery';
+        document.querySelector('input[name="store_id"]').value = 1;
+
     }
 }
